@@ -1,0 +1,3 @@
+/venv/
+*.pyc
+./quotes_bot/config.py
