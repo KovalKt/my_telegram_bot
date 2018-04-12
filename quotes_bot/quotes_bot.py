@@ -1,6 +1,6 @@
 import requests
 from time import sleep
-from config import BOT_TOKEN
+from quotes_bot.config import BOT_TOKEN
 
 
 class BotHandler:
