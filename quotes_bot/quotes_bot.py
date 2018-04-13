@@ -19,8 +19,10 @@ class BotHandler:
 
     def send_message(self, chat_id, text):
         params = {'chat_id': chat_id, 'text': text}
+        print(params)
         method = 'sendMessage'
         resp = requests.post(self.api_url + method, params)
+        print("response after message sent", resp)
         return resp
 
     def get_last_update(self):
@@ -29,7 +31,7 @@ class BotHandler:
         if len(get_result) > 0:
             last_update = get_result[-1]
         else:
-            last_update = get_result[len(get_result)]
+            last_update = []
 
         return last_update
 
@@ -48,6 +50,9 @@ def main():
         greet_bot.get_updates(new_offset)
 
         last_update = greet_bot.get_last_update()
+        
+        if not last_update:
+            continue
 
         last_update_id = last_update['update_id']
         last_chat_text = last_update['message']['text']
@@ -62,7 +67,7 @@ def main():
             greet_bot.send_message(last_chat_id, 'Добрый день, {}'.format(last_chat_name))
             today += 1
 
-        elif last_chat_text.lower() in greetings and today == now.day and 17 <= hour < 23:
+        elif last_chat_text.lower() in greetings and today == now.day and 17 <= hour <= 23:
             greet_bot.send_message(last_chat_id, 'Добрый вечер, {}'.format(last_chat_name))
             today += 1
 
