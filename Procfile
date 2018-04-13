@@ -1,1 +1,1 @@
-web: python quotes_bot.py
+web: python quotes_bot/quotes_bot.py
