@@ -29,5 +29,5 @@ def get_random_quote():
 
     # Join all the text between these two '%%'
     quote = "".join(line[start_line:end_line])
-
+    print quote
     return quote
