@@ -82,7 +82,7 @@ from config import BOT_TOKEN
 
 import os
 from telegram.ext import Updater, CommandHandler
-from quotes import get_random_quote
+# from quotes import get_random_quote
 
 # Your bot token (from BotFather)
 token = BOT_TOKEN
@@ -94,6 +94,7 @@ def start(bot, update):
                                                           update.message.from_user.name))
 
 def quote(bot, update):
+    print("let's send quote")
     bot.sendMessage(chat_id=update.message.chat_id,
                     text=get_random_quote())
 
@@ -118,6 +119,28 @@ def main():
     updater.bot.set_webhook("https://aqueous-ridge-88309.herokuapp.com/" + token)
 
     updater.idle()
+
+def get_random_quote():
+    quotes = [
+        """Жалость — штука опасная.
+                    — Антон Городецкий""",
+        """Я всегда считал, что непродуманные, но благие поступки приносят больше пользы, чем продуманные, но жестокие.
+                    — Гесер""",
+        """Один в поле воин, если знает, что он один.
+                    — Гесер""",
+        """Количество людей, которые ужаснутся произошедшему, прольют слезы и посочувствуют горю, будет велико. 
+           Но больше, неизмеримо больше окажется тех, кто жадно прильнет к экрану телевизора, кто будет наслаждаться 
+           чужой бедой, радоваться, что она миновала их город, сострит по поводу Третьего Рима, который постигло наказание… наказание свыше. 
+           Ты знаешь это, враг мой. — Гесеру
+                    — Завулон""",
+        """Светлана: Я выбрала то, что хотела.
+           Антон Городецкий: Знаю. И потому — терпи.
+           Светлана: Всю жизнь?
+           Антон Городецкий: Да. Она будет долгой, но ты все равно никогда не привыкнешь. 
+                             Никогда не избавишься от вопроса: насколько правилен каждый сделанный шаг."""
+    ]
+    random_quote_num = (randint(0, len(quotes)-1))
+    return quotes[random_quote_num]
 
 
 if __name__ == "__main__":
