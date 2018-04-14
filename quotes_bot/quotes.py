@@ -63,5 +63,6 @@ QUOTES = [
 ]
 
 def get_random_quote():
-    random_quote_num = randint(0, len(quotes)-1)
-    return quotes[random_quote_num]
+    random_quote_num = randint(0, len(QUOTES)-1)
+    print(QUOTES[random_quote_num])
+    return QUOTES[random_quote_num]
