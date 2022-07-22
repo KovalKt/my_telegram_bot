@@ -4,9 +4,8 @@ from config import BOT_TOKEN
 from telegram.ext import Updater, CommandHandler
 from quotes import get_random_quote
 
-
 PORT = int(os.environ.get('PORT', '8443'))
-
+token = BOT_TOKEN
 
 def start(bot, update):
     bot.sendMessage(
