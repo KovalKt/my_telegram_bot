@@ -4,8 +4,7 @@ from config import BOT_TOKEN
 from telegram.ext import Updater, CommandHandler
 from quotes import get_random_quote
 
-# Your bot token (from BotFather)
-token = BOT_TOKEN
+
 PORT = int(os.environ.get('PORT', '8443'))
 
 
